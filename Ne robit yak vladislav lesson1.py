@@ -1,5 +1,6 @@
 import random
 
+# === Симуляція міста, студентів і тварин ===
 class City:
     def __init__(self, name):
         self.name = name
@@ -115,20 +116,139 @@ class Student:
         self.end_of_day()
         self.is_alive()
 
+# === Завдання 2: Особа і Водій ===
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-# Симуляція на 365 днів
+    def show_age(self):
+        print(f"{self.name} має {self.age} років.")
+
+class Driver(Person):
+    def __init__(self, name, age, license_number):
+        super().__init__(name, age)
+        self.license_number = license_number
+
+    def show_license(self):
+        print(f"Номер водійського посвідчення: {self.license_number}")
+
+# === Завдання 3: Транспортний засіб ===
+class Vehicle:
+    def __init__(self, speed):
+        self.speed = speed
+
+    def move(self):
+        print(f"Рухається зі швидкістю {self.speed} км/год.")
+
+class Car(Vehicle):
+    pass
+
+class Bicycle(Vehicle):
+    pass
+
+# === Завдання 4: Пристрій ===
+class Device:
+    def turn_on(self):
+        print("Пристрій увімкнено.")
+
+    def turn_off(self):
+        print("Пристрій вимкнено.")
+
+class Smartphone(Device):
+    pass
+
+class Laptop(Device):
+    pass
+
+# === Завдання 5: Мова програмування ===
+class ProgrammingLanguage:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"Привіт від {self.name}!")
+
+class PythonLang(ProgrammingLanguage):
+    pass
+
+# === Симуляція роботи ===
 city = City("Львів")
-
 student1 = Student("Марко", Pet("Барсик"), city)
 student2 = Student("Аліна", Pet("Рекс"), city)
 
 for day in range(1, 366):
     if not student1.alive and not student2.alive:
         break
-    print(f"=== День {day} ===")
     if student1.alive:
         student1.live(f"День {day}")
     if student2.alive:
         student2.live(f"День {day}")
 
-print(f"\nУ місті {city.name} мешкає {len(city.citizens)} осіб.")
+print(f"\nУ місті {city.name} мешкає {len(city.citizens)} осіб.\n")
+
+# Демонстрація інших класів:
+print("=== Завдання 2 ===")
+driver = Driver("Олег", 30, "AB123456")
+driver.show_age()
+driver.show_license()
+
+print("\n=== Завдання 3 ===")
+car = Car(120)
+bike = Bicycle(25)
+car.move()
+bike.move()
+
+print("\n=== Завдання 4 ===")
+phone = Smartphone()
+laptop = Laptop()
+phone.turn_on()
+laptop.turn_off()
+
+print("\n=== Завдання 5 ===")
+python = PythonLang("Python")
+python.greet()
+
+# === Додаткове домашнє завдання ===
+
+# Завдання 1
+print("\n=== Додаткове Завдання 1 ===")
+users = {
+    "Олег": "Дорослий",
+    "Марія": "Підліток",
+    "Софія": "Дитина"
+}
+name = input("Введіть ім'я користувача: ")
+if name in users:
+    print(f"{name} належить до вікової групи: {users[name]}")
+else:
+    print("Користувача з таким ім'ям не знайдено.")
+
+# Завдання 2
+print("\n=== Додаткове Завдання 2 ===")
+try:
+    number = int(input("Введіть число: "))
+    print(f"Ви ввели число: {number}")
+except ValueError:
+    print("Помилка: неможливо конвертувати введені дані в число.")
+
+# Завдання 3
+print("\n=== Додаткове Завдання 3 ===")
+file_path = input("Введіть шлях до файлу: ")
+try:
+    with open(file_path, 'r', encoding='utf-8') as file:
+        content = file.read()
+        print("Вміст файлу:")
+        print(content)
+except FileNotFoundError:
+    print("Файл за вказаним шляхом не знайдено.")
+
+# Завдання 4
+print("\n=== Додаткове Завдання 4 ===")
+try:
+    import math
+    result = math.sqrt(16)
+    print(f"Корінь з 16 = {result}")
+    math.non_existing_function()
+except AttributeError:
+    print("Помилка: такої функції не існує в модулі.")
